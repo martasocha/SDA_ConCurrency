@@ -140,9 +140,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConCurrency.cpp" />
+    <ClCompile Include="ExchangeCurrency.cpp" />
+    <ClCompile Include="FromForeignToForeign.cpp" />
+    <ClCompile Include="FromForeignToPLN.cpp" />
+    <ClCompile Include="FromPLNToForeign.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExchangeCurrency.hpp" />
+    <ClInclude Include="FromForeignToForeign.hpp" />
+    <ClInclude Include="FromForeignToPLN.hpp" />
+    <ClInclude Include="FromPLNToForeign.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
