@@ -1,6 +1,10 @@
 #include "FromPLNToForeign.hpp"
 
-std::tuple<int, double> FromPLNToForeign::currencyExchange(int amount)
+std::tuple<int, double> FromPLNToForeign::currencyExchange(int amount, std::string currencyCode)
 {
-    return std::tuple<int, double>();
+    int ForeginAmount = amount / database.getMapOfCurrencies().at(currencyCode);
+    double PLNamount = amount - (ForeginAmount * database.getMapOfCurrencies().at(currencyCode));
+    double roundedPLNamount = (static_cast<int>(PLNamount * 100)) / 100;
+
+    return std::make_tuple(ForeginAmount, roundedPLNamount);
 }

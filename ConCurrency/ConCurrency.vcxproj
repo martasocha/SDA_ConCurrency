@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConCurrency.cpp" />
+    <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="ExchangeCurrency.cpp" />
     <ClCompile Include="FromForeignToForeign.cpp" />
     <ClCompile Include="FromForeignToPLN.cpp" />
     <ClCompile Include="FromPLNToForeign.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataBase.hpp" />
     <ClInclude Include="ExchangeCurrency.hpp" />
     <ClInclude Include="FromForeignToForeign.hpp" />
     <ClInclude Include="FromForeignToPLN.hpp" />
