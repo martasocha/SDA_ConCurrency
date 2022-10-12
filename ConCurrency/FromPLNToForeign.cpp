@@ -2,9 +2,20 @@
 
 std::tuple<int, double> FromPLNToForeign::currencyExchange(int amount, std::string currencyCode)
 {
-    int ForeginAmount = amount / database.getMapOfCurrencies().at(currencyCode);
-    double PLNamount = amount - (ForeginAmount * database.getMapOfCurrencies().at(currencyCode));
-    double roundedPLNamount = (static_cast<int>(PLNamount * 100)) / 100;
+    double currencyRate = 0.0;
 
-    return std::make_tuple(ForeginAmount, roundedPLNamount);
+    if (currencyCode == "PLNHUF" || currencyCode == "PLNJPY")
+    {
+        currencyRate = (database.getMapOfCurrencies().at(currencyCode)) / 100.0;
+    }
+    else
+    {
+        currencyRate = database.getMapOfCurrencies().at(currencyCode);
+    }
+
+    int foreignAmount = static_cast<int>(amount / currencyRate);
+    double PLNamount = amount - (foreignAmount * currencyRate);
+    double roundedPLNamount = (round(PLNamount * 100)) / 100;
+
+    return std::make_tuple(foreignAmount, roundedPLNamount);
 }
