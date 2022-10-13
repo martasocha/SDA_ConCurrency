@@ -6,7 +6,7 @@ std::tuple<int, double> FromForeignToPLN::currencyExchange(int amount, std::stri
 
     if (currencyCode == "HUFPLN" || currencyCode == "JPYPLN")
     {
-        currencyRate = (database.getMapOfCurrencies().at(currencyCode)) * 100.0;
+        currencyRate = (database.getMapOfCurrencies().at(currencyCode)) / 100.0;
     }
     else
     {
