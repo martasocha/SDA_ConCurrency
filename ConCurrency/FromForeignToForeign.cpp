@@ -2,8 +2,9 @@
 #include"FromForeignToPLN.hpp"
 #include"FromPLNToForeign.hpp"
 #include <memory>
+#include <utility>
 
-std::tuple<int, double> FromForeignToForeign::currencyExchange(int amount, std::string currencyCode)
+std::pair<int, double> FromForeignToForeign::currencyExchange(int amount, std::string currencyCode)
 {
 	std::shared_ptr<ExchangeCurrency> exchangeForeignToPLN = nullptr;
 	exchangeForeignToPLN = std::make_shared<FromForeignToPLN>();

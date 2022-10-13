@@ -1,6 +1,6 @@
 #pragma once
 #include "DataBase.hpp"
-#include <tuple>
+#include <utility>
 #include <string>
 
 class ExchangeCurrency
@@ -11,5 +11,5 @@ protected:
 	//a pozniej ja odejmowaæ
 public:
 	virtual ~ExchangeCurrency() = default;
-	virtual std::tuple <int, double> currencyExchange(int amount, std::string currencyCode) = 0;
+	virtual std::pair<int, double> currencyExchange(int amount, std::string currencyCode) = 0;
 };
