@@ -1,6 +1,7 @@
 #include "FromForeignToPLN.hpp"
+#include <utility>
 
-std::tuple<int, double> FromForeignToPLN::currencyExchange(int amount, std::string currencyCode)
+std::pair<int, double> FromForeignToPLN::currencyExchange(int amount, std::string currencyCode)
 {
     double currencyRate = 0.0;
 
@@ -16,5 +17,5 @@ std::tuple<int, double> FromForeignToPLN::currencyExchange(int amount, std::stri
     double PLNamount = amount * currencyRate;
     double roundedPLNamount = (round(PLNamount * 100)) / 100;
 
-    return std::make_tuple(0, roundedPLNamount);
+    return std::make_pair(0, roundedPLNamount);
 }
