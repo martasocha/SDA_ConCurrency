@@ -156,6 +156,7 @@
     <ClInclude Include="FromForeignToForeign.hpp" />
     <ClInclude Include="FromForeignToPLN.hpp" />
     <ClInclude Include="FromPLNToForeign.hpp" />
+    <ClInclude Include="json\json.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
