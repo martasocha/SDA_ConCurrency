@@ -7,7 +7,7 @@ DataBase::DataBase()
 
 std::map<std::string, double> DataBase::getMapOfCurrencies()
 {
-    return _mapOfCurrencies;;
+    return _mapOfCurrencies;
 }
 
 std::map<std::string, double> DataBase::getCurrenciesFromJSONFile() const

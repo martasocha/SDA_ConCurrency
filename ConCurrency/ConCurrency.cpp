@@ -90,7 +90,9 @@ int main()
 
     std::cout << "Dziękujemy za skorzystanie z naszej aplikacji i życzymy miłego dnia :)" << std::endl;
 
-
-
+    std::cout << std::endl;
+    cashier.displayOpeningBalance();
+    std::cout << std::endl;
+    cashier.displayCurrencyRateTable();
 
 }
