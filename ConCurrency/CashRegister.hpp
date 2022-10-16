@@ -16,4 +16,6 @@ private:
 
 public:
 	CashRegister(std::map<std::string, double> cashRegistersForCurrencies);
+	std::map<std::string, double> getCashRegistersForCurrencies() const;
+
 };
