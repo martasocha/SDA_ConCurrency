@@ -21,7 +21,7 @@ int main()
     {"GBP",5000.0}, {"JPY",500000.0}, {"CZK",5000.0}, {"DKK",5000.0}, {"NOK",5000.0}, {"SEK",5000.0}, {"XDR",5000.0}
     };
 
-    CashRegister cashRegister(cashRegistersForCurrencies);
+    std::shared_ptr<CashRegister> cashRegister = std::make_shared<CashRegister>(cashRegistersForCurrencies);
 
     std::cout
         << "Witaj w aplikacji ConCurrency!" << std::endl
@@ -48,7 +48,7 @@ int main()
         std::cin >> currencyCode;
         concatenatedCurrencyCodes = "PLN" + currencyCode;
 
-        cantor = std::make_shared<FromPLNToForeign>();
+        cantor = std::make_shared<FromPLNToForeign>(cashRegister);
 
         break;
     case 3:
@@ -59,7 +59,7 @@ int main()
         std::cin >> currencyCode;
         concatenatedCurrencyCodes = currencyCode + "PLN";
 
-        cantor = std::make_shared<FromForeignToPLN>();
+        cantor = std::make_shared<FromForeignToPLN>(cashRegister);
 
         break;
     case 4:
@@ -74,7 +74,7 @@ int main()
         std::cin >> currencyCode;
         concatenatedCurrencyCodes += currencyCode;
 
-        cantor = std::make_shared<FromForeignToForeign>();
+        cantor = std::make_shared<FromForeignToForeign>(cashRegister);
 
         break;
     default:
