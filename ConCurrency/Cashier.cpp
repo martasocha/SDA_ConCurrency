@@ -3,14 +3,14 @@
 #include <iomanip>
 #include <vector>
 
-Cashier::Cashier(std::shared_ptr<ExchangeCurrency> exchange, CashRegister cashRegister)
+Cashier::Cashier(std::shared_ptr<ExchangeCurrency> exchange, std::shared_ptr<CashRegister> cashRegister)
 	: _exchange(exchange), _cashregister(cashRegister)
 {
 }
 
-std::tuple <int, double> Cashier::exchangeCurrencyforCashier(int amount, std::string CurrencyCode)
+std::pair <int, double> Cashier::exchangeCurrencyforCashier(int amount, std::string CurrencyCode)
 {
-	std::tuple <int, double> exchangedMoney = _exchange->currencyExchange(amount, CurrencyCode);
+	std::pair <int, double> exchangedMoney = _exchange->currencyExchange(amount, CurrencyCode);
 	return exchangedMoney;
 }
 
@@ -24,7 +24,7 @@ void Cashier::displayOpeningBalance()
 	std::cout << std::setw(15) << "|" << std::setw(15) << "Kwota" << std::setw(15) << "|" << std::setw(15) << "Waluta" << std::setw(10) << "|" << std::endl;
 	std::cout << std::endl;
 
-	auto map = _cashregister.getCashRegistersForCurrencies();
+	auto map = _cashregister->getCashRegistersForCurrencies();
 	for (auto it = map.begin(); it != map.end(); ++it)
 	{
 		std::cout << std::setw(70) << "--------------------------------------------------------" << std::setw(10) << std::endl;

@@ -9,3 +9,8 @@ std::map<std::string, double> CashRegister::getCashRegistersForCurrencies() cons
 {
 	return _cashRegistersForCurrencies;
 }
+
+void CashRegister::setCashRegistersForCurrencies(std::map<std::string, double> cashRegistersForCurrencies)
+{
+	this->_cashRegistersForCurrencies = cashRegistersForCurrencies;
+}
