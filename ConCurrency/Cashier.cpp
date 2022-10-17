@@ -10,7 +10,12 @@ Cashier::Cashier(std::shared_ptr<ExchangeCurrency> exchange, std::shared_ptr<Cas
 
 std::pair <int, double> Cashier::exchangeCurrencyforCashier(int amount, std::string CurrencyCode)
 {
+	_cashregister->updateCurrenciesAmountsFromFile();
+
 	std::pair <int, double> exchangedMoney = _exchange->currencyExchange(amount, CurrencyCode);
+
+	_cashregister->writeCurrenciesAmountsToJSONFile();
+
 	return exchangedMoney;
 }
 
