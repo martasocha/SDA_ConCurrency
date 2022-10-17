@@ -5,7 +5,6 @@
 #include "Cashier.hpp"
 #include "CashRegister.hpp"
 #include <iostream>
-#include <tuple>
 #include <map>
 
 int main()
@@ -16,12 +15,8 @@ int main()
     std::string concatenatedCurrencyCodes = {};
     std::shared_ptr<ExchangeCurrency> cantor = nullptr;
     
-    std::map<std::string, double> cashRegistersForCurrencies{
-    {"PLN",10000.0}, {"USD",5000.0}, {"AUD",5000.0}, {"CAD",5000.0}, {"EUR",5000.0}, {"HUF",500000.0}, {"CHF",5000.0},
-    {"GBP",5000.0}, {"JPY",500000.0}, {"CZK",5000.0}, {"DKK",5000.0}, {"NOK",5000.0}, {"SEK",5000.0}, {"XDR",5000.0}
-    };
 
-    std::shared_ptr<CashRegister> cashRegister = std::make_shared<CashRegister>(cashRegistersForCurrencies);
+    std::shared_ptr<CashRegister> cashRegister = std::make_shared<CashRegister>();
 
     std::cout
         << "Witaj w aplikacji ConCurrency!" << std::endl

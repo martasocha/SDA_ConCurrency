@@ -11,7 +11,7 @@ class DataBase
 {
 private:
 	std::map<std::string, double> _mapOfCurrencies = {};
-	std::map<std::string, double> getCurrenciesFromJSONFile() const;
+	std::map<std::string, double> readCurrenciesFromJSONFile() const;
 public:
 	DataBase();
 	std::map<std::string, double> getMapOfCurrencies();
