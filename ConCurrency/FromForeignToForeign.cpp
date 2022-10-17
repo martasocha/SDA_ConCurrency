@@ -6,17 +6,14 @@
 
 std::pair<int, double> FromForeignToForeign::currencyExchange(int amount, std::string currencyCode)
 {
-	std::shared_ptr<ExchangeCurrency> exchangeForeignToPLN = nullptr;
-	exchangeForeignToPLN = std::make_shared<FromForeignToPLN>();
-	
-	std::shared_ptr<ExchangeCurrency> exchangePLNtoForeign = nullptr;
-	exchangePLNtoForeign = std::make_shared<FromPLNToForeign>();
+	FromForeignToPLN obj1;
+	FromPLNToForeign obj2;
 
 	std::string currencyCodeToPLN = currencyCode.substr(0, 3) + "PLN";
 	std::string currencyCodeFromPLN = "PLN" + currencyCode.substr(3, 3);
 
-	auto changeForeignToPLN = exchangeForeignToPLN->currencyExchange(amount, currencyCodeToPLN);
-	auto changePLNtoForeign = exchangePLNtoForeign->currencyExchange(std::get<1>(changeForeignToPLN), currencyCodeFromPLN);
+	auto changeForeignToPLN = obj1.currencyExchange(amount, currencyCodeToPLN);
+	auto changePLNtoForeign = obj2.currencyExchange(changeForeignToPLN.second, currencyCodeFromPLN);
 
 	return changePLNtoForeign;
 }

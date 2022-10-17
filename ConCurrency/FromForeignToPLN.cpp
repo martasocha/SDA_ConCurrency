@@ -8,6 +8,7 @@ std::pair<int, double> FromForeignToPLN::currencyExchange(int amount, std::strin
     if (currencyCode == "HUFPLN" || currencyCode == "JPYPLN")
     {
         currencyRate = (database.getMapOfCurrencies().at(currencyCode)) / 100.0;
+
     }
     else
     {
