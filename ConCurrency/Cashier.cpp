@@ -8,11 +8,11 @@ Cashier::Cashier(std::shared_ptr<ExchangeCurrency> exchange, std::shared_ptr<Cas
 {
 }
 
-std::pair <int, double> Cashier::exchangeCurrencyforCashier(int amount, std::string CurrencyCode)
+std::pair <double, double> Cashier::exchangeCurrencyforCashier(int amount, std::string CurrencyCode)
 {
 	_cashregister->updateCurrenciesAmountsFromFile();
 
-	std::pair <int, double> exchangedMoney = _exchange->currencyExchange(amount, CurrencyCode);
+	std::pair <double, double> exchangedMoney = _exchange->currencyExchange(amount, CurrencyCode);
 
 	_cashregister->writeCurrenciesAmountsToJSONFile();
 
@@ -33,7 +33,7 @@ void Cashier::displayOpeningBalance()
 	for (auto it = map.begin(); it != map.end(); ++it)
 	{
 		std::cout << std::setw(70) << "--------------------------------------------------------" << std::setw(10) << std::endl;
-		std::cout << std::setw(15) << "|" << std::setw(15) << it->second << std::setw(15) << "|" << std::setw(15) << it->first << std::setw(10) << "|" << std::endl;
+		std::cout << std::setw(15) << "|" << std::setw(15) <<it->second << std::setw(15) << "|" << std::setw(15) << it->first << std::setw(10) << "|" << std::endl;
 		std::cout << std::setw(70) << "--------------------------------------------------------" << std::setw(10) << std::endl;
 	}
 }

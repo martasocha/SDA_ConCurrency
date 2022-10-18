@@ -10,16 +10,20 @@ FromForeignToForeign::FromForeignToForeign(std::shared_ptr<CashRegister> cashReg
 {
 }
 
-std::pair<int, double> FromForeignToForeign::currencyExchange(int amount, std::string currencyCode)
+std::pair<double, double> FromForeignToForeign::currencyExchange(double amount, std::string currencyCode)
 {
-	FromForeignToPLN obj1(_cashRegister);
-	FromPLNToForeign obj2(_cashRegister);
+	FromForeignToPLN valuePLN(_cashRegister);
+	FromPLNToForeign valueForeign(_cashRegister);
 
 	std::string currencyCodeToPLN = currencyCode.substr(0, 3) + "PLN";
 	std::string currencyCodeFromPLN = "PLN" + currencyCode.substr(3, 3);
 
-	auto changeForeignToPLN = obj1.currencyExchange(amount, currencyCodeToPLN);
-	auto changePLNtoForeign = obj2.currencyExchange(changeForeignToPLN.second, currencyCodeFromPLN);
+	auto changeForeignToPLN = valuePLN.currencyExchange(amount, currencyCodeToPLN);
+	auto changePLNtoForeign = valueForeign.currencyExchange(changeForeignToPLN.second, currencyCodeFromPLN);
+
+	//double rest = changeForeignToPLN.second - static_cast<int>(changeForeignToPLN.second);
+	//changePLNtoForeign.second += rest;
+
 
 	return changePLNtoForeign;
 }

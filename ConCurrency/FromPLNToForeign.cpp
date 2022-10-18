@@ -7,7 +7,7 @@ FromPLNToForeign::FromPLNToForeign(std::shared_ptr<CashRegister> cashRegister)
 {
 }
 
-std::pair<int, double> FromPLNToForeign::currencyExchange(int amount, std::string currencyCode)
+std::pair<double, double> FromPLNToForeign::currencyExchange(double amount, std::string currencyCode)
 {
     double currencyRate = 0.0;
 
@@ -21,10 +21,10 @@ std::pair<int, double> FromPLNToForeign::currencyExchange(int amount, std::strin
     }
 
     int foreignAmount = static_cast<int>(amount / currencyRate);
-    double PLNamount = amount - (foreignAmount * currencyRate);
+    double PLNamount = static_cast<double>( amount - (foreignAmount * currencyRate));
     double roundedPLNamount = (round(PLNamount * 100)) / 100;
 
-    std::pair<int, double> changedMoney = std::make_pair(foreignAmount, roundedPLNamount);
+    std::pair<double, double> changedMoney = std::make_pair(foreignAmount, roundedPLNamount);
 
     if (checkCurrencyAvailability(changedMoney, currencyCode))
     {

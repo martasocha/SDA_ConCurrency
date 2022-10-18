@@ -5,7 +5,7 @@ ExchangeCurrency::ExchangeCurrency(std::shared_ptr<CashRegister> cashRegister)
 {
 }
 
-bool ExchangeCurrency::checkCurrencyAvailability(std::pair<int, double> exchangedMoney, std::string currencyCode)
+bool ExchangeCurrency::checkCurrencyAvailability(std::pair<double, double> exchangedMoney, std::string currencyCode)
 {
     std::string currencyCode1 = currencyCode.substr(0, 3);
     std::string currencyCode2 = currencyCode.substr(3, 3);
@@ -15,26 +15,26 @@ bool ExchangeCurrency::checkCurrencyAvailability(std::pair<int, double> exchange
 
     if (currencyCode1 == "PLN")
     {
-        return ((static_cast<double>(exchangedMoney.first) <= cashRegisterForCurrency2) && (exchangedMoney.second <= cashRegisterForCurrency1));
+        return ((exchangedMoney.first <= cashRegisterForCurrency2) && (exchangedMoney.second <= cashRegisterForCurrency1));
     }
     else
     {
-        return ((static_cast<double>(exchangedMoney.first) <= cashRegisterForCurrency1) && (exchangedMoney.second <= cashRegisterForCurrency2));
+        return ((exchangedMoney.first<= cashRegisterForCurrency1) && (exchangedMoney.second <= cashRegisterForCurrency2));
     }
 }
 
-void ExchangeCurrency::updateCurrenciesAmounts(int amount, std::pair<int, double> exchangedMoney, std::string currencyCode)
+void ExchangeCurrency::updateCurrenciesAmounts(double amount, std::pair<double, double> exchangedMoney, std::string currencyCode)
 {
     std::string currencycode1 = currencyCode.substr(0, 3);
     std::string currencycode2 = currencyCode.substr(3, 3);
 
     std::map<std::string, double> cashRegistersCopy = _cashRegister->getCashRegistersForCurrencies();
 
-    cashRegistersCopy.at(currencycode1) += static_cast<double>(amount);
+    cashRegistersCopy.at(currencycode1) += amount;
     if (currencycode1 == "PLN")
     {
         cashRegistersCopy.at(currencycode1) -= exchangedMoney.second;
-        cashRegistersCopy.at(currencycode2) -= static_cast<double>(exchangedMoney.first);
+        cashRegistersCopy.at(currencycode2) -= exchangedMoney.first;
     }
     else
     {

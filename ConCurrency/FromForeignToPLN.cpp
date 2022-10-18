@@ -7,7 +7,7 @@ FromForeignToPLN::FromForeignToPLN(std::shared_ptr<CashRegister> cashRegister)
 {
 }
 
-std::pair<int, double> FromForeignToPLN::currencyExchange(int amount, std::string currencyCode)
+std::pair<double, double> FromForeignToPLN::currencyExchange(double amount, std::string currencyCode)
 {
     double currencyRate = 0.0;
 
@@ -24,7 +24,7 @@ std::pair<int, double> FromForeignToPLN::currencyExchange(int amount, std::strin
     double PLNamount = amount * currencyRate;
     double roundedPLNamount = (round(PLNamount * 100)) / 100;
 
-    std::pair<int, double> changedMoney = std::make_pair(0, roundedPLNamount);
+    std::pair<double, double> changedMoney = std::make_pair(0, roundedPLNamount);
 
     if (checkCurrencyAvailability(changedMoney, currencyCode))
     {
