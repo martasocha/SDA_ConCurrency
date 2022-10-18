@@ -18,12 +18,17 @@ std::pair<double, double> FromForeignToForeign::currencyExchange(double amount, 
 	std::string currencyCodeToPLN = currencyCode.substr(0, 3) + "PLN";
 	std::string currencyCodeFromPLN = "PLN" + currencyCode.substr(3, 3);
 
-	auto changeForeignToPLN = valuePLN.currencyExchange(amount, currencyCodeToPLN);
-	auto changePLNtoForeign = valueForeign.currencyExchange(changeForeignToPLN.second, currencyCodeFromPLN);
+	auto changeForeignToPLN = valuePLN.changeForeignToPLN(amount, currencyCodeToPLN);
+	auto changePLNtoForeign = valueForeign.changePLNtoForeign(changeForeignToPLN.second, currencyCodeFromPLN);
 
-	//double rest = changeForeignToPLN.second - static_cast<int>(changeForeignToPLN.second);
-	//changePLNtoForeign.second += rest;
-
-
+	if (checkCurrencyAvailability(changePLNtoForeign, currencyCode))
+	{
+		updateCurrenciesAmounts(amount, changePLNtoForeign, currencyCode);
+		return changePLNtoForeign;
+	}
+	else
+	{
+		//tutaj bedzie wyjatek
+	}
 	return changePLNtoForeign;
 }
