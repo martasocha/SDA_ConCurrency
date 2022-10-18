@@ -31,15 +31,22 @@ void ExchangeCurrency::updateCurrenciesAmounts(double amount, std::pair<double, 
     std::map<std::string, double> cashRegistersCopy = _cashRegister->getCashRegistersForCurrencies();
 
     cashRegistersCopy.at(currencycode1) += amount;
+
     if (currencycode1 == "PLN")
     {
         cashRegistersCopy.at(currencycode1) -= exchangedMoney.second;
         cashRegistersCopy.at(currencycode2) -= exchangedMoney.first;
     }
-    else
+    else if (currencycode2 == "PLN")
     {
         cashRegistersCopy.at(currencycode2) -= exchangedMoney.second;
 
     }
+    else
+    {
+        cashRegistersCopy.at("PLN") -= exchangedMoney.second;
+        cashRegistersCopy.at(currencycode2) -= exchangedMoney.first;
+    }
+
     _cashRegister->setCashRegistersForCurrencies(cashRegistersCopy);
 }

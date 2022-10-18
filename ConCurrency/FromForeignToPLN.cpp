@@ -9,6 +9,22 @@ FromForeignToPLN::FromForeignToPLN(std::shared_ptr<CashRegister> cashRegister)
 
 std::pair<double, double> FromForeignToPLN::currencyExchange(double amount, std::string currencyCode)
 {
+    FromForeignToPLN toPLN(_cashRegister);
+    auto changedMoney = toPLN.changeForeignToPLN(amount, currencyCode);
+
+    if (checkCurrencyAvailability(changedMoney, currencyCode))
+    {
+        updateCurrenciesAmounts(amount, changedMoney, currencyCode);
+        return changedMoney;
+    }
+    else
+    {
+        //tutaj bedzie wyjatek
+    }
+}
+
+std::pair<double, double> FromForeignToPLN::changeForeignToPLN(double amount, std::string currencyCode)
+{
     double currencyRate = 0.0;
 
     if (currencyCode == "HUFPLN" || currencyCode == "JPYPLN")
@@ -24,16 +40,5 @@ std::pair<double, double> FromForeignToPLN::currencyExchange(double amount, std:
     double PLNamount = amount * currencyRate;
     double roundedPLNamount = (round(PLNamount * 100)) / 100;
 
-    std::pair<double, double> changedMoney = std::make_pair(0, roundedPLNamount);
-
-    if (checkCurrencyAvailability(changedMoney, currencyCode))
-    {
-        updateCurrenciesAmounts(amount, changedMoney, currencyCode);
-        return changedMoney;
-    }
-    else
-    {
-        std::cout << "Nie uda³o siê przeprowadziæ transakcji, brak potrzebnej ilosci waluty w kasach" << std::endl;
-        return std::make_pair(amount, 0);
-    }
+    return std::make_pair(0, roundedPLNamount);
 }
