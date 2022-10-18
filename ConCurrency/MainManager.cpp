@@ -83,7 +83,7 @@ void MainManager::mainFunction()
     case 2:
         std::cout << _menuOptions.at(1) << std::endl;
 
-        _cashier.displayOpeningBalance();
+        _cashier.displayUpdatedCashRegisterBalance();
 
         return;
         break;

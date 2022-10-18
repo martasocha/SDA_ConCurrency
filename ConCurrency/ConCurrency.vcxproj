@@ -142,7 +142,9 @@
     <ClCompile Include="Cashier.cpp" />
     <ClCompile Include="CashRegister.cpp" />
     <ClCompile Include="ConCurrency.cpp" />
+    <ClCompile Include="Currency.cpp" />
     <ClCompile Include="DataBase.cpp" />
+    <ClCompile Include="DataToDisplay.cpp" />
     <ClCompile Include="ExchangeCurrency.cpp" />
     <ClCompile Include="FromForeignToForeign.cpp" />
     <ClCompile Include="FromForeignToPLN.cpp" />
@@ -152,7 +154,9 @@
   <ItemGroup>
     <ClInclude Include="Cashier.hpp" />
     <ClInclude Include="CashRegister.hpp" />
+    <ClInclude Include="Currency.hpp" />
     <ClInclude Include="DataBase.hpp" />
+    <ClInclude Include="DataToDisplay.hpp" />
     <ClInclude Include="ExchangeCurrency.hpp" />
     <ClInclude Include="FromForeignToForeign.hpp" />
     <ClInclude Include="FromForeignToPLN.hpp" />
