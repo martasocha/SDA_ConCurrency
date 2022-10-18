@@ -2,6 +2,7 @@
 
 CashRegister::CashRegister()
 {
+    _cashRegistersForCurrencies = readCurrenciesAmountsFromJSONFile();
 }
 
 std::map<std::string, double> CashRegister::getCashRegistersForCurrencies() const
