@@ -6,5 +6,5 @@ class FromPLNToForeign : public ExchangeCurrency
 {
 public:
 	FromPLNToForeign(std::shared_ptr<CashRegister> cashRegister);
-	std::pair<int, double> currencyExchange(int amount, std::string currencyCode) override;
+	std::pair<double, double> currencyExchange(double amount, std::string currencyCode) override;
 };
