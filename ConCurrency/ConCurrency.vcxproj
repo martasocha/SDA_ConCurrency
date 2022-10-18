@@ -147,6 +147,7 @@
     <ClCompile Include="FromForeignToForeign.cpp" />
     <ClCompile Include="FromForeignToPLN.cpp" />
     <ClCompile Include="FromPLNToForeign.cpp" />
+    <ClCompile Include="MainManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cashier.hpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="FromForeignToPLN.hpp" />
     <ClInclude Include="FromPLNToForeign.hpp" />
     <ClInclude Include="json\json.hpp" />
+    <ClInclude Include="MainManager.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

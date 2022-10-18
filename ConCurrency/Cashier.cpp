@@ -3,9 +3,23 @@
 #include <iomanip>
 #include <vector>
 
+Cashier::Cashier()
+{
+}
+
 Cashier::Cashier(std::shared_ptr<ExchangeCurrency> exchange, std::shared_ptr<CashRegister> cashRegister)
 	: _exchange(exchange), _cashregister(cashRegister)
 {
+}
+
+void Cashier::setExchange(std::shared_ptr<ExchangeCurrency> exchange)
+{
+	_exchange = exchange;
+}
+
+void Cashier::setCashRegister(std::shared_ptr<CashRegister> cashregister)
+{
+	_cashregister = cashregister;
 }
 
 std::pair <double, double> Cashier::exchangeCurrencyforCashier(int amount, std::string CurrencyCode)
