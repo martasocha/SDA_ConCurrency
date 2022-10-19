@@ -28,7 +28,7 @@ std::pair<double, double> FromForeignToForeign::currencyExchange(double amount, 
 	}
 	else
 	{
-		//tutaj bedzie wyjatek
+		throw std::out_of_range("Nie udało się przeprowadzić transakcji, brak potrzebnej ilości waluty w kasach.");
 	}
 	return changePLNtoForeign;
 }

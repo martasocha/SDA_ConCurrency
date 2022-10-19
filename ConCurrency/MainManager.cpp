@@ -49,18 +49,48 @@ void MainManager::takeAmountOfMoneyFromUser()
 {
     std::cout << "Podaj kwote do wymiany: ";
     std::cin >> _amountOfMoney;
+
+    exceptionHandlingForAmountOfMoney();
 }
 
 void MainManager::takeCurrencyToSellCodeFromUser()
 {
     std::cout << "Podaj kod waluty, ktora chcesz sprzedac: ";
     std::cin >> _currencyCode;
+
+    exceptionHandlingForCurrencyCodes();
 }
 
 void MainManager::takeCurrencyToBuyCodeFromUser()
 {
     std::cout << "Podaj kod waluty, ktora chcesz kupic: ";
     std::cin >> _currencyCode;
+
+    exceptionHandlingForCurrencyCodes();
+}
+
+void MainManager::exceptionHandlingForCurrencyCodes() const
+{
+    std::map<std::string, double> tempMapOfCurrencies = _cashRegister->getCashRegistersForCurrencies();
+    if ("PLN" == _currencyCode)
+    {
+        throw std::invalid_argument("Nie możesz tutaj wybrać PLN.");
+    }
+
+    auto it = tempMapOfCurrencies.find(_currencyCode);
+
+    if (it == tempMapOfCurrencies.end())
+    {
+        throw std::invalid_argument("W kantorze nie ma takiej waluty.");
+    }
+}
+
+void MainManager::exceptionHandlingForAmountOfMoney() const
+{
+    if (_amountOfMoney <= 0)
+    {
+        throw std::invalid_argument("Ilość pieniędzy do wymiany musi być większa od 0.");
+    }
 }
 
 
