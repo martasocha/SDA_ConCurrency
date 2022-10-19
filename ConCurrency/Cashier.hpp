@@ -20,6 +20,7 @@ public:
 
 	void displayUpdatedCashRegisterBalance();
 	void displayCurrencyRateTable();
+	void updateCurrencyRatesInDataBase();
 	//void displayCashReport();
 
 };

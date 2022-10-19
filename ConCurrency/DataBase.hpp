@@ -15,8 +15,9 @@ private:
 		{"PLNGBP",5.6042}, {"GBPPLN",5.4932}, {"PLNJPY",3.4758}, {"JPYPLN",3.4070}, {"PLNCZK",0.2004}, {"CZKPLN",0.1964},
 		{"PLNDKK",0.6607}, {"DKKPLN",0.6477}, {"PLNNOK",0.4701}, {"NOKPLN", 0.4607}, {"PLNSEK",0.4460}, {"SEKPLN",0.4372},
 		{"PLNXDR",6.4344}, {"XDRPLN",6.3070} };
+
 	std::map<std::string, double> readCurrenciesFromJSONFile() const;
 public:
-	
 	std::map<std::string, double> getMapOfCurrencies();
+	void updateCurrenciesAmountsFromFile();
 };

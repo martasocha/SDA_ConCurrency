@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include "ExchangeCurrency.hpp"
 #include "FromPLNToForeign.hpp"
 #include "FromForeignToPLN.hpp"
