@@ -1,10 +1,5 @@
 #include "DataBase.hpp"
 
-DataBase::DataBase()
-{
-    _mapOfCurrencies = readCurrenciesFromJSONFile();
-}
-
 std::map<std::string, double> DataBase::getMapOfCurrencies()
 {
     return _mapOfCurrencies;

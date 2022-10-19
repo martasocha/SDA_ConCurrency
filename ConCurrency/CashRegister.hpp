@@ -15,6 +15,7 @@ private:
 
 public:
 	CashRegister();
+	CashRegister(std::map<std::string, double> cashRegistersForCurrencies);
 	std::map<std::string, double> getCashRegistersForCurrencies() const;
 	void setCashRegistersForCurrencies(std::map<std::string, double> cashRegistersForCurrencies);
 	std::map<std::string, double> readCurrenciesAmountsFromJSONFile() const;
