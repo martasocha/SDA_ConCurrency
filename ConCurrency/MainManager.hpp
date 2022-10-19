@@ -12,7 +12,7 @@
 class MainManager
 {
 	std::vector<std::string> _menuOptions = {};
-	uint32_t _amountOfMoney = 0;
+	double _amountOfMoney = 0.0;
 	uint16_t _usersMenuChoice = 0;
 	std::string _currencyCode = {};
 	std::string _concatenatedCurrencyCodes = {};
@@ -26,6 +26,9 @@ class MainManager
 	void takeAmountOfMoneyFromUser();
 	void takeCurrencyToSellCodeFromUser();
 	void takeCurrencyToBuyCodeFromUser();
+
+	void exceptionHandlingForCurrencyCodes() const;
+	void exceptionHandlingForAmountOfMoney() const;
 
 public:
 	MainManager();
