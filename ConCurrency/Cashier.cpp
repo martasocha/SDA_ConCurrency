@@ -292,6 +292,11 @@ void Cashier::displayCurrencyRateTable()
 	//std::cout << std::endl;
 }
 
+void Cashier::updateCurrencyRatesInDataBase()
+{
+	_dataBase.updateCurrenciesAmountsFromFile();
+}
+
 //void Cashier::displayCashReport()
 //{
 //}

@@ -68,6 +68,8 @@ void MainManager::mainFunction()
 {
     std::cout << "Witaj w aplikacji ConCurrency!" << std::endl;
 
+    _cashier.updateCurrencyRatesInDataBase();
+
     chooseFromMenu();
 
     switch (_usersMenuChoice)
