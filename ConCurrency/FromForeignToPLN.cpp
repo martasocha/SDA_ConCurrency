@@ -25,17 +25,7 @@ std::pair<double, double> FromForeignToPLN::currencyExchange(double amount, std:
 
 std::pair<double, double> FromForeignToPLN::changeForeignToPLN(double amount, std::string currencyCode)
 {
-    double currencyRate = 0.0;
-
-    if (currencyCode == "HUFPLN" || currencyCode == "JPYPLN")
-    {
-        currencyRate = (_database.getMapOfCurrencies().at(currencyCode)) / 100.0;
-
-    }
-    else
-    {
-        currencyRate = _database.getMapOfCurrencies().at(currencyCode);
-    }
+    double currencyRate = checkHUFandJPY(currencyCode);
 
     double PLNamount = amount * currencyRate;
     double roundedPLNamount = (round(PLNamount * 100)) / 100;

@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestFromPLNToForeign", "Tes
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestFromForeignToForeign", "TestFromForeignToForeign\TestFromForeignToForeign.vcxproj", "{13398D77-B03F-4B5D-8137-5BE382B91E78}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestCheckCurrencyAvailability", "TestCheckCurrencyAvailability\TestCheckCurrencyAvailability.vcxproj", "{D8DC0324-6F85-491A-BDBF-8BA28753C495}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestUpdateCurrenciesAmounts", "TestUpdateCurrenciesAmounts\TestUpdateCurrenciesAmounts.vcxproj", "{6D8BCD67-BB45-4CF1-816B-AD594150177A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +55,22 @@ Global
 		{13398D77-B03F-4B5D-8137-5BE382B91E78}.Release|x64.Build.0 = Release|x64
 		{13398D77-B03F-4B5D-8137-5BE382B91E78}.Release|x86.ActiveCfg = Release|Win32
 		{13398D77-B03F-4B5D-8137-5BE382B91E78}.Release|x86.Build.0 = Release|Win32
+		{D8DC0324-6F85-491A-BDBF-8BA28753C495}.Debug|x64.ActiveCfg = Debug|x64
+		{D8DC0324-6F85-491A-BDBF-8BA28753C495}.Debug|x64.Build.0 = Debug|x64
+		{D8DC0324-6F85-491A-BDBF-8BA28753C495}.Debug|x86.ActiveCfg = Debug|Win32
+		{D8DC0324-6F85-491A-BDBF-8BA28753C495}.Debug|x86.Build.0 = Debug|Win32
+		{D8DC0324-6F85-491A-BDBF-8BA28753C495}.Release|x64.ActiveCfg = Release|x64
+		{D8DC0324-6F85-491A-BDBF-8BA28753C495}.Release|x64.Build.0 = Release|x64
+		{D8DC0324-6F85-491A-BDBF-8BA28753C495}.Release|x86.ActiveCfg = Release|Win32
+		{D8DC0324-6F85-491A-BDBF-8BA28753C495}.Release|x86.Build.0 = Release|Win32
+		{6D8BCD67-BB45-4CF1-816B-AD594150177A}.Debug|x64.ActiveCfg = Debug|x64
+		{6D8BCD67-BB45-4CF1-816B-AD594150177A}.Debug|x64.Build.0 = Debug|x64
+		{6D8BCD67-BB45-4CF1-816B-AD594150177A}.Debug|x86.ActiveCfg = Debug|Win32
+		{6D8BCD67-BB45-4CF1-816B-AD594150177A}.Debug|x86.Build.0 = Debug|Win32
+		{6D8BCD67-BB45-4CF1-816B-AD594150177A}.Release|x64.ActiveCfg = Release|x64
+		{6D8BCD67-BB45-4CF1-816B-AD594150177A}.Release|x64.Build.0 = Release|x64
+		{6D8BCD67-BB45-4CF1-816B-AD594150177A}.Release|x86.ActiveCfg = Release|Win32
+		{6D8BCD67-BB45-4CF1-816B-AD594150177A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
