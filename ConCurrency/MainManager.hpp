@@ -7,6 +7,7 @@
 #include "CashRegister.hpp"
 #include <iostream>
 #include <vector>
+#include"../ConCurrency/CashierLogIn.hpp"
 
 
 class MainManager
@@ -19,6 +20,7 @@ class MainManager
 	std::shared_ptr<ExchangeCurrency> _cantor = nullptr;
 	std::shared_ptr<CashRegister> _cashRegister = std::make_shared<CashRegister>();
 	Cashier _cashier;
+	CashierLogIn log;
 
 	void displayCurrencyCodes() const;
 	void setMenuOptions();
