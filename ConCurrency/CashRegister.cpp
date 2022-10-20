@@ -2,7 +2,8 @@
 
 CashRegister::CashRegister()
 {
-    _cashRegistersForCurrencies = readCurrenciesAmountsFromJSONFile();
+    std::ifstream ifs("currenciesInCashRegister.json");
+    _cashRegistersForCurrencies = _jSONReader.readFromFile(ifs);
 }
 
 CashRegister::CashRegister(std::map<std::string, double> cashRegistersForCurrencies):
@@ -20,21 +21,15 @@ void CashRegister::setCashRegistersForCurrencies(std::map<std::string, double> c
 	this->_cashRegistersForCurrencies = cashRegistersForCurrencies;
 }
 
-std::map<std::string, double> CashRegister::readCurrenciesAmountsFromJSONFile() const
-{
-    std::ifstream ifs("currenciesInCashRegister.json");
-    json j = json::parse(ifs);
-    return std::move(j);
-}
 
 void CashRegister::updateCurrenciesAmountsFromFile()
 {
-    _cashRegistersForCurrencies = readCurrenciesAmountsFromJSONFile();
+    std::ifstream ifs("currenciesInCashRegister.json");
+    _cashRegistersForCurrencies = _jSONReader.readFromFile(ifs);
 }
 
 void CashRegister::writeCurrenciesAmountsToJSONFile() const
 {
-    json j = _cashRegistersForCurrencies;
     std::ofstream o("currenciesInCashRegister.json");
-    o << std::setw(4) << j << std::endl;
+    _jSONWriter.writeToFile(o, _cashRegistersForCurrencies);
 }

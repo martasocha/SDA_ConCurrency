@@ -1,10 +1,8 @@
 #pragma once
-#include "json/json.hpp"
+#include "JSONReader.hpp"
 #include <map>
 #include <string>
 #include <fstream>
-
-using json = nlohmann::json;
 
 
 class DataBase
@@ -16,7 +14,8 @@ private:
 		{"PLNDKK",0.6607}, {"DKKPLN",0.6477}, {"PLNNOK",0.4701}, {"NOKPLN", 0.4607}, {"PLNSEK",0.4460}, {"SEKPLN",0.4372},
 		{"PLNXDR",6.4344}, {"XDRPLN",6.3070} };
 
-	std::map<std::string, double> readCurrenciesFromJSONFile() const;
+	JSONReader _jSONReader;
+
 public:
 	std::map<std::string, double> getMapOfCurrencies();
 	void updateCurrenciesAmountsFromFile();

@@ -149,6 +149,8 @@
     <ClCompile Include="FromForeignToForeign.cpp" />
     <ClCompile Include="FromForeignToPLN.cpp" />
     <ClCompile Include="FromPLNToForeign.cpp" />
+    <ClCompile Include="JSONReader.cpp" />
+    <ClCompile Include="JSONWriter.cpp" />
     <ClCompile Include="MainManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +163,8 @@
     <ClInclude Include="FromForeignToForeign.hpp" />
     <ClInclude Include="FromForeignToPLN.hpp" />
     <ClInclude Include="FromPLNToForeign.hpp" />
+    <ClInclude Include="JSONReader.hpp" />
+    <ClInclude Include="JSONWriter.hpp" />
     <ClInclude Include="json\json.hpp" />
     <ClInclude Include="MainManager.hpp" />
   </ItemGroup>

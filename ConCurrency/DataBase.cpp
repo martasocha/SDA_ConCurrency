@@ -7,13 +7,6 @@ std::map<std::string, double> DataBase::getMapOfCurrencies()
 
 void DataBase::updateCurrenciesAmountsFromFile()
 {
-    _mapOfCurrencies = readCurrenciesFromJSONFile();
-}
-
-std::map<std::string, double> DataBase::readCurrenciesFromJSONFile() const
-{
     std::ifstream ifs("currencies.json");
-    json j = json::parse(ifs);
-    std::map<std::string, double> m = j;
-    return m;
+    _mapOfCurrencies = _jSONReader.readFromFile(ifs);
 }
