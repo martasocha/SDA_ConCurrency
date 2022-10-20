@@ -86,7 +86,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)ConCurrency\x64\Debug;$(SolutionDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DataBase.obj;ExchangeCurrency.obj;FromPLNToForeign.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DataBase.obj;ExchangeCurrency.obj;FromPLNToForeign.obj;CashRegister.obj;Cashier.obj;Currency.obj;DataToDisplay.obj;JSONReader.obj;JSONWriter.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
