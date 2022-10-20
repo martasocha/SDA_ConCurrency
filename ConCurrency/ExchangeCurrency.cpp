@@ -5,6 +5,18 @@ ExchangeCurrency::ExchangeCurrency(std::shared_ptr<CashRegister> cashRegister)
 {
 }
 
+double ExchangeCurrency::checkHUFandJPY(std::string currencyCode)
+{
+    if (currencyCode == "PLNHUF" || currencyCode == "PLNJPY")
+    {
+        return _database.getMapOfCurrencies().at(currencyCode) / 100.0;
+    }
+    else
+    {
+        return _database.getMapOfCurrencies().at(currencyCode);
+    }
+}
+
 bool ExchangeCurrency::checkCurrencyAvailability(std::pair<double, double> exchangedMoney, std::string currencyCode)
 {
     std::string currencyCode1 = currencyCode.substr(0, 3);
@@ -12,14 +24,19 @@ bool ExchangeCurrency::checkCurrencyAvailability(std::pair<double, double> excha
 
     double cashRegisterForCurrency1 = _cashRegister->getCashRegistersForCurrencies().at(currencyCode1);
     double cashRegisterForCurrency2 = _cashRegister->getCashRegistersForCurrencies().at(currencyCode2);
+    double cashRegisterForCurrencyPLN = _cashRegister->getCashRegistersForCurrencies().at("PLN");
 
     if (currencyCode1 == "PLN")
     {
         return ((exchangedMoney.first <= cashRegisterForCurrency2) && (exchangedMoney.second <= cashRegisterForCurrency1));
     }
+    else if (currencyCode2 == "PLN")
+    {
+        return ((exchangedMoney.first <= cashRegisterForCurrency1) && (exchangedMoney.second <= cashRegisterForCurrency2));
+    }
     else
     {
-        return ((exchangedMoney.first<= cashRegisterForCurrency1) && (exchangedMoney.second <= cashRegisterForCurrency2));
+        return ((exchangedMoney.first <= cashRegisterForCurrency2) && (exchangedMoney.second <= cashRegisterForCurrencyPLN));
     }
 }
 
