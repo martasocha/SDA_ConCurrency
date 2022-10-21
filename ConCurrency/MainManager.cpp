@@ -69,6 +69,57 @@ void MainManager::takeCurrencyToBuyCodeFromUser()
     exceptionHandlingForCurrencyCodes();
 }
 
+void MainManager::fromPLNToForeign()
+{
+    std::cout << _menuOptions.at(2) << std::endl;
+    takeAmountOfMoneyFromUser();
+    displayCurrencyCodes();
+    takeCurrencyToBuyCodeFromUser();
+    _concatenatedCurrencyCodes = "PLN" + _currencyCode;
+    _cantor = std::make_shared<FromPLNToForeign>(_cashRegister);
+    moneyExchange();
+}
+
+void MainManager::fromForeignToPLN()
+{
+    std::cout << _menuOptions.at(3) << std::endl;
+    takeAmountOfMoneyFromUser();
+    displayCurrencyCodes();
+    takeCurrencyToSellCodeFromUser();
+    _concatenatedCurrencyCodes = _currencyCode + "PLN";
+    _cantor = std::make_shared<FromForeignToPLN>(_cashRegister);
+    moneyExchange();
+}
+
+void MainManager::fromForeignToForeign()
+{
+    std::cout << _menuOptions.at(4) << std::endl;
+    takeAmountOfMoneyFromUser();
+    displayCurrencyCodes();
+    takeCurrencyToSellCodeFromUser();
+    _concatenatedCurrencyCodes = _currencyCode;
+    takeCurrencyToBuyCodeFromUser();
+    _concatenatedCurrencyCodes += _currencyCode;
+    _cantor = std::make_shared<FromForeignToForeign>(_cashRegister);
+    moneyExchange();
+}
+
+void MainManager::moneyExchange()
+{
+    _cashier.setExchange(_cantor);
+    auto exchangedMoneyAndChange = _cashier.exchangeCurrencyforCashier(_amountOfMoney, _concatenatedCurrencyCodes);
+    std::cout << "Kwota w obcej walucie: " << std::get<0>(exchangedMoneyAndChange) << " " << _currencyCode << std::endl;
+    std::cout << "Kwota w PLN: " << std::get<1>(exchangedMoneyAndChange) << std::endl;
+}
+
+void MainManager::pause() const
+{
+    std::string pause;
+    std::cout << "Nacisnij enter zeby kontynuowac ...";
+    std::getline(std::cin, pause);
+    std::cout << std::endl;
+}
+
 void MainManager::exceptionHandlingForCurrencyCodes() const
 {
     std::map<std::string, double> tempMapOfCurrencies = _cashRegister->getCashRegistersForCurrencies();
@@ -96,93 +147,48 @@ void MainManager::exceptionHandlingForAmountOfMoney() const
 
 void MainManager::mainFunction()
 {
-    log.cashierLogInMain();
+    //_cashierLogIn.cashierLogInMain();
     std::cout << "Witaj w aplikacji ConCurrency!" << std::endl;
-
     _cashier.updateCurrencyRatesInDataBase();
 
-    chooseFromMenu();
-
-    switch (_usersMenuChoice)
+    do
     {
-    case 1:
-        std::cout << _menuOptions.at(0) << std::endl;
+        chooseFromMenu();
+        switch (_usersMenuChoice)
+        {
+        case 1:
+            std::cout << _menuOptions.at(0) << std::endl;
+            _cashier.displayCurrencyRateTable();
+            pause();
+            break;
+        case 2:
+            std::cout << _menuOptions.at(1) << std::endl;
+            _cashier.displayUpdatedCashRegisterBalance();
+            pause();
+            break;
+        case 3:
+            fromPLNToForeign();
+            pause();
+            break;
+        case 4:
+            fromForeignToPLN();
+            pause();
+            break;
+        case 5:
+            fromForeignToForeign();
+            pause();
+            break;
+        case 6:
+            std::cout << _menuOptions.at(5) << std::endl;
+            break;
+        default:
+            std::cout << "Taka opcja nie jest dostępna." << std::endl;
+            break;
+        }
+        std::cout << std::endl;
+    } while ((_usersMenuChoice > 0) && (_usersMenuChoice < 6));
 
-        _cashier.displayCurrencyRateTable();
 
-        return;
-        break;
-
-    case 2:
-        std::cout << _menuOptions.at(1) << std::endl;
-
-        _cashier.displayUpdatedCashRegisterBalance();
-
-        return;
-        break;
-
-    case 3:
-        std::cout << _menuOptions.at(2) << std::endl;
-
-        takeAmountOfMoneyFromUser();
-
-        displayCurrencyCodes();
-
-        takeCurrencyToBuyCodeFromUser();
-
-        _concatenatedCurrencyCodes = "PLN" + _currencyCode;
-
-        _cantor = std::make_shared<FromPLNToForeign>(_cashRegister);
-        break;
-
-    case 4:
-        std::cout << _menuOptions.at(3) << std::endl;
-
-        takeAmountOfMoneyFromUser();
-
-        displayCurrencyCodes();
-
-        takeCurrencyToSellCodeFromUser();
-
-        _concatenatedCurrencyCodes = _currencyCode + "PLN";
-
-        _cantor = std::make_shared<FromForeignToPLN>(_cashRegister);
-        break;
-
-    case 5:
-        std::cout << _menuOptions.at(4) << std::endl;
-
-        takeAmountOfMoneyFromUser();
-
-        displayCurrencyCodes();
-
-        takeCurrencyToSellCodeFromUser();
-
-        _concatenatedCurrencyCodes = _currencyCode;
-
-        takeCurrencyToBuyCodeFromUser();
-
-        _concatenatedCurrencyCodes += _currencyCode;
-
-        _cantor = std::make_shared<FromForeignToForeign>(_cashRegister);
-
-        break;
-    case 6:
-        std::cout << _menuOptions.at(5) << std::endl;
-
-        return;
-        break;
-
-    default:
-        std::cout << "Taka opcja nie jest dostępna." << std::endl;
-        return;
-        break;
-    }
-
-    _cashier.setExchange(_cantor);
-    auto exchangedMoneyAndChange = _cashier.exchangeCurrencyforCashier(_amountOfMoney, _concatenatedCurrencyCodes);
-    std::cout << "Kwota w obcej walucie: " << std::get<0>(exchangedMoneyAndChange) << " " << _currencyCode << std::endl;
-    std::cout << "Kwota w PLN: " << std::get<1>(exchangedMoneyAndChange) << std::endl;
 
 
 }
