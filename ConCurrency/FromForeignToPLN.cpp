@@ -32,3 +32,15 @@ std::pair<double, double> FromForeignToPLN::changeForeignToPLN(double amount, st
 
     return std::make_pair(0, roundedPLNamount);
 }
+
+double FromForeignToPLN::checkHUFandJPY(std::string currencyCode)
+{
+    if (currencyCode == "HUFPLN" || currencyCode == "JPYPLN")
+    {
+        return _database.getMapOfCurrencies().at(currencyCode) / 100.0;
+    }
+    else
+    {
+        return _database.getMapOfCurrencies().at(currencyCode);
+    }
+}

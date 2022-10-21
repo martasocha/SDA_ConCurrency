@@ -14,7 +14,6 @@ public:
 
 	virtual ~ExchangeCurrency() = default;
 	virtual std::pair<double, double> currencyExchange(double amount, std::string currencyCode) = 0;
-	double checkHUFandJPY(std::string currencyCode);
 
 	bool checkCurrencyAvailability(std::pair<double, double> exchangedMoney, std::string currencyCode);
 	void updateCurrenciesAmounts(double amount, std::pair<double, double> exchangedMoney, std::string currencyCode);

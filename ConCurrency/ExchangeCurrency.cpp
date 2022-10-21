@@ -5,18 +5,6 @@ ExchangeCurrency::ExchangeCurrency(std::shared_ptr<CashRegister> cashRegister)
 {
 }
 
-double ExchangeCurrency::checkHUFandJPY(std::string currencyCode)
-{
-    if (currencyCode == "PLNHUF" || currencyCode == "PLNJPY")
-    {
-        return _database.getMapOfCurrencies().at(currencyCode) / 100.0;
-    }
-    else
-    {
-        return _database.getMapOfCurrencies().at(currencyCode);
-    }
-}
-
 bool ExchangeCurrency::checkCurrencyAvailability(std::pair<double, double> exchangedMoney, std::string currencyCode)
 {
     std::string currencyCode1 = currencyCode.substr(0, 3);
