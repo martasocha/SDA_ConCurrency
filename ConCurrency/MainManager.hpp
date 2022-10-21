@@ -5,10 +5,9 @@
 #include "FromForeignToForeign.hpp"
 #include "Cashier.hpp"
 #include "CashRegister.hpp"
+#include "CashierLogIn.hpp"
 #include <iostream>
 #include <vector>
-#include"../ConCurrency/CashierLogIn.hpp"
-
 
 class MainManager
 {
@@ -20,7 +19,7 @@ class MainManager
 	std::shared_ptr<ExchangeCurrency> _cantor = nullptr;
 	std::shared_ptr<CashRegister> _cashRegister = std::make_shared<CashRegister>();
 	Cashier _cashier;
-	CashierLogIn log;
+	CashierLogIn _cashierLogIn;
 
 	void displayCurrencyCodes() const;
 	void setMenuOptions();
@@ -28,6 +27,11 @@ class MainManager
 	void takeAmountOfMoneyFromUser();
 	void takeCurrencyToSellCodeFromUser();
 	void takeCurrencyToBuyCodeFromUser();
+	void fromPLNToForeign();
+	void fromForeignToPLN();
+	void fromForeignToForeign();
+	void moneyExchange();
+	void pause() const;
 
 	void exceptionHandlingForCurrencyCodes() const;
 	void exceptionHandlingForAmountOfMoney() const;

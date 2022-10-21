@@ -4,7 +4,6 @@
 
 using json = nlohmann::json;
 
-
 class JSONWriter
 {
 public:
