@@ -147,7 +147,7 @@ void MainManager::exceptionHandlingForAmountOfMoney() const
 
 void MainManager::mainFunction()
 {
-    //_cashierLogIn.cashierLogInMain();
+    _cashierLogIn.cashierLogInMain();
     std::cout << "Witaj w aplikacji ConCurrency!" << std::endl;
     _cashier.updateCurrencyRatesInDataBase();
 

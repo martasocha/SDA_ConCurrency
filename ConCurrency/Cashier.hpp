@@ -3,6 +3,8 @@
 #include "ExchangeCurrency.hpp"
 #include "DataToDisplay.hpp"
 #include "CashRegister.hpp"
+#include "tabulate/tabulate.hpp"
+using namespace tabulate;
 
 class Cashier
 {

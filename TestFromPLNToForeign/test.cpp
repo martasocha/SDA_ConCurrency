@@ -28,11 +28,11 @@ protected:
 	FromPLNToForeign testedMethod;
 };
 
-TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_returnChangeInPLN)
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_return0)
 {
-	auto result = testedMethod.currencyExchange(200, "PLNEUR");
-	EXPECT_EQ(result.first, 40);
-	EXPECT_EQ(result.second, 3.39);
+	auto result = testedMethod.currencyExchange(0, "EURPLN");
+	EXPECT_EQ(result.first, 0);
+	EXPECT_EQ(result.second, 0);
 }
 TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_willNotExchange)
 {
@@ -40,20 +40,132 @@ TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_willNotExchange)
 	EXPECT_EQ(result.first, 0);
 	EXPECT_EQ(result.second, 3);
 }
-TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_returnChangeInPLNPassedException)
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_returnException)
 {
 	EXPECT_THROW(testedMethod.currencyExchange(10000, "PLNEUR"), std::out_of_range);
 }
-TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_return0)
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoUSD_returnChange)
 {
-	auto result = testedMethod.currencyExchange(0, "EURPLN");
-	EXPECT_EQ(result.first, 0);
+	auto result = testedMethod.currencyExchange(200, "PLNUSD");
+	EXPECT_EQ(result.first, 39);
+	EXPECT_EQ(result.second, 2.42);
+}
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoAUD_returnChange)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNAUD");
+	EXPECT_EQ(result.first, 62);
+	EXPECT_EQ(result.second, 2.98);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoCAD_returnChange)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNCAD");
+	EXPECT_EQ(result.first, 54);
+	EXPECT_EQ(result.second, 1.98);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_returnChange)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNEUR");
+	EXPECT_EQ(result.first, 40);
+	EXPECT_EQ(result.second, 3.39);
+}
+
+//HUF
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoHUF_returnNoChangeCase1)
+{
+	auto result = testedMethod.currencyExchange(100, "PLNHUF");
+	EXPECT_EQ(result.first, 8244);
 	EXPECT_EQ(result.second, 0);
+}
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoHUF_returnNoChangeCase2)
+{
+	auto result = testedMethod.currencyExchange(1000, "PLNHUF");
+	EXPECT_EQ(result.first, 82440);
+	EXPECT_EQ(result.second, 0);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoHUF_returnChangeCornerCase)
+{
+	auto result = testedMethod.currencyExchange(2000, "PLNHUF");
+	EXPECT_EQ(result.first, 164880);
+	EXPECT_EQ(result.second, 0.01);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoCHF_returnChange)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNCHF");
+	EXPECT_EQ(result.first, 39);
+	EXPECT_EQ(result.second, 2.11);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoGBP_returnChange)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNGBP");
+	EXPECT_EQ(result.first, 35);
+	EXPECT_EQ(result.second, 3.85);
+}
+
+//JEN
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoJPY_returnNoChange)
+{
+	auto result = testedMethod.currencyExchange(100, "PLNJPY");
+	EXPECT_EQ(result.first, 2877);
+	EXPECT_EQ(result.second, 0);
+}
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoJPY_returnNoChangeCornerCase)
+{
+	auto result = testedMethod.currencyExchange(1000, "PLNJPY");
+	EXPECT_EQ(result.first, 28770);
+	EXPECT_EQ(result.second, 0.01);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoCZK_returnNoChangeCornerCase)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNCZK");
+	EXPECT_EQ(result.first, 998);
+	EXPECT_EQ(result.second, 0);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoCZK_returnChange)
+{
+	auto result = testedMethod.currencyExchange(201, "PLNCZK");
+	EXPECT_EQ(result.first, 1002);
+	EXPECT_EQ(result.second, 0.2);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoDKK_returnChange)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNDKK");
+	EXPECT_EQ(result.first, 302);
+	EXPECT_EQ(result.second, 0.47);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoNOK_returnChange)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNNOK");
+	EXPECT_EQ(result.first, 425);
+	EXPECT_EQ(result.second, 0.21);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoSEK_returnChange)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNSEK");
+	EXPECT_EQ(result.first, 448);
+	EXPECT_EQ(result.second, 0.19);
+}
+
+TEST_F(TestFromPLNToForeign, exchange_FromPLNtoXDR_returnChange)
+{
+	auto result = testedMethod.currencyExchange(200, "PLNXDR");
+	EXPECT_EQ(result.first, 31);
+	EXPECT_EQ(result.second, 0.53);
 }
 
 
 //FIRST TESTS ON BASIC FUNCTIONALITY
-
+// 
 //class TestFromPLNToEUR : public ::testing::Test
 //{
 //protected:
