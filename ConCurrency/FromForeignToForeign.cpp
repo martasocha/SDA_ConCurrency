@@ -1,6 +1,7 @@
 #include "FromForeignToForeign.hpp"
 #include"FromForeignToPLN.hpp"
 #include"FromPLNToForeign.hpp"
+#include "OutOfCashException.hpp"
 #include <memory>
 #include <utility>
 
@@ -28,7 +29,8 @@ std::pair<double, double> FromForeignToForeign::currencyExchange(double amount, 
 	}
 	else
 	{
-		throw std::out_of_range("Nie udało się przeprowadzić transakcji, brak potrzebnej ilości waluty w kasach.");
+		throw OutOfCashException("Nie udało się przeprowadzić transakcji, brak potrzebnej ilości waluty w kasach.");
+
 	}
 	return changePLNtoForeign;
 }

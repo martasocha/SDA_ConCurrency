@@ -1,4 +1,5 @@
 #include "CashierLogIn.hpp"
+#include "IncorrectLoginOrPasswordException.hpp"
 #include<iostream>
 #include <thread>      
 #include <chrono>  
@@ -61,6 +62,6 @@ void CashierLogIn::cashierLogInMain()
     CashierLogIn log;
     if (!log.checkCashierLogin() || !log.checkCashierPassword())
     {
-        throw std::invalid_argument(" ");
+        throw IncorrectLoginOrPasswordException("Nie udalo sie zalogowac");
     }
 }
