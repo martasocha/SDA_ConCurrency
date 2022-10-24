@@ -7,6 +7,7 @@
 #include "../ConCurrency/DataToDisplay.hpp"
 #include "../ConCurrency/JSONReader.hpp"
 #include "../ConCurrency/JSONWriter.hpp"
+#include "..\ConCurrency\OutOfCashException.hpp"
 
 
 //UPDATED TESTS
@@ -42,7 +43,7 @@ TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_willNotExchange)
 }
 TEST_F(TestFromPLNToForeign, exchange_FromPLNtoEUR_returnException)
 {
-	EXPECT_THROW(testedMethod.currencyExchange(10000, "PLNEUR"), std::out_of_range);
+	EXPECT_THROW(testedMethod.currencyExchange(10000, "PLNEUR"), OutOfCashException);
 }
 
 TEST_F(TestFromPLNToForeign, exchange_FromPLNtoUSD_returnChange)

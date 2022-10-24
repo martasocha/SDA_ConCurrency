@@ -6,7 +6,7 @@
 #include"..\ConCurrency\FromPLNToForeign.hpp"
 #include"..\ConCurrency\Cashier.hpp"
 #include"..\ConCurrency\CashRegister.hpp"
-
+#include "..\ConCurrency\OutOfCashException.hpp"
 class TestFromForeignToForeign : public ::testing::Test
 {
 protected:
@@ -33,7 +33,7 @@ TEST_F(TestFromForeignToForeign, exchange_FromEURToUSD_test100EUR)
 }
 TEST_F(TestFromForeignToForeign, exchange_FromAUDToCAD_test6000AUD)
 {
-	EXPECT_THROW(exchangeTest.currencyExchange(6000, "AUDCAD"), std::out_of_range);
+	EXPECT_THROW(exchangeTest.currencyExchange(6000, "AUDCAD"), OutOfCashException);
 }
 
 TEST_F(TestFromForeignToForeign, exchange_FromGBPToDKK_test550GBP)
@@ -51,7 +51,7 @@ TEST_F(TestFromForeignToForeign, exchange_FromUSDToEUR_test10USD)
 }
 TEST_F(TestFromForeignToForeign, exchange_FromUSDToEUR_test5000USD)
 {
-	EXPECT_THROW(exchangeTest.currencyExchange(5000, "USDEUR"), std::out_of_range);
+	EXPECT_THROW(exchangeTest.currencyExchange(5000, "USDEUR"), OutOfCashException);
 }
 
 TEST_F(TestFromForeignToForeign, exchange_FromJPYToHUF_test10000JPY)
@@ -91,5 +91,5 @@ TEST_F(TestFromForeignToForeign, exchange_FromSEKToCHF_test1500SEK)
 }
 TEST_F(TestFromForeignToForeign, exchange_FromGBPToCZK_test190GBP)
 {
-	EXPECT_THROW(exchangeTest.currencyExchange(190, "GBPCZK"), std::out_of_range);
+	EXPECT_THROW(exchangeTest.currencyExchange(190, "GBPCZK"), OutOfCashException);
 }
