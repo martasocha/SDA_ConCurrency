@@ -101,5 +101,11 @@
     <ClInclude Include="CashierLogIn.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OutOfCashException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IncorrectLoginOrPasswordException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

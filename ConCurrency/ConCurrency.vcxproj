@@ -166,10 +166,12 @@
     <ClInclude Include="FromForeignToForeign.hpp" />
     <ClInclude Include="FromForeignToPLN.hpp" />
     <ClInclude Include="FromPLNToForeign.hpp" />
+    <ClInclude Include="IncorrectLoginOrPasswordException.hpp" />
     <ClInclude Include="JSONReader.hpp" />
     <ClInclude Include="JSONWriter.hpp" />
     <ClInclude Include="json\json.hpp" />
     <ClInclude Include="MainManager.hpp" />
+    <ClInclude Include="OutOfCashException.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
