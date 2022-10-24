@@ -140,7 +140,7 @@ void MainManager::exceptionHandlingForAmountOfMoney() const
 {
     if (_amountOfMoney <= 0)
     {
-        throw std::invalid_argument("Ilość pieniędzy do wymiany musi być większa od 0.");
+        throw std::invalid_argument("Wprowadzone dane muszą być liczbą większą od 0.");
     }
 }
 
