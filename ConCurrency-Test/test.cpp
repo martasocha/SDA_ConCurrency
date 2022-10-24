@@ -7,6 +7,7 @@
 #include "../ConCurrency/DataToDisplay.hpp"
 #include "../ConCurrency/JSONReader.hpp"
 #include "../ConCurrency/JSONWriter.hpp"
+#include "../ConCurrency/OutOfCashException.hpp"
 
 class TestFromForeignToPLN : public ::testing::Test
 {
@@ -31,7 +32,7 @@ TEST_F(TestFromForeignToPLN, exchange_FromForeignToPLN_returnPLN_test2USD)
 }
 TEST_F(TestFromForeignToPLN, exchange_FromForeignToPLN_returnPLN_test6000AUD)
 {
-	EXPECT_THROW(exchangeTest.currencyExchange(6000, "AUDPLN"), std::out_of_range);
+	EXPECT_THROW(exchangeTest.currencyExchange(6000, "AUDPLN"), OutOfCashException);
 }
 
 TEST_F(TestFromForeignToPLN, exchange_FromForeignToPLN_returnPLN_test1USD)
@@ -74,7 +75,7 @@ TEST_F(TestFromForeignToPLN, exchange_FromForeignToPLN_returnPLN_test101HUF)
 }
 TEST_F(TestFromForeignToPLN, exchange_FromForeignToPLN_returnPLN_test6900GBP)
 {
-	EXPECT_THROW(exchangeTest.currencyExchange(6900, "GBPPLN"), std::out_of_range);
+	EXPECT_THROW(exchangeTest.currencyExchange(6900, "GBPPLN"), OutOfCashException);
 }
 
 TEST_F(TestFromForeignToPLN, exchange_FromForeignToPLN_returnPLN_test1XDR)
@@ -94,5 +95,5 @@ TEST_F(TestFromForeignToPLN, exchange_FromForeignToPLN_returnPLN_test3500CZK)
 }
 TEST_F(TestFromForeignToPLN, exchange_FromForeignToPLN_returnPLN_test5200CHF)
 {
-	EXPECT_THROW(exchangeTest.currencyExchange(5200, "CHFPLN"), std::out_of_range);
+	EXPECT_THROW(exchangeTest.currencyExchange(5200, "CHFPLN"), OutOfCashException);
 }
