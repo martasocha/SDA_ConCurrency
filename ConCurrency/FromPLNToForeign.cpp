@@ -28,9 +28,9 @@ std::pair<double, double> FromPLNToForeign::changePLNtoForeign(double amount, st
 {
     double currencyRate = checkHUFandJPY(currencyCode);
 
-    int foreignAmount = static_cast<int>(amount / currencyRate);
-    double PLNamount = static_cast<double>(amount - (foreignAmount * currencyRate));
-    double roundedPLNamount = (round(PLNamount * 100)) / 100;
+    double foreignAmount = floor(amount / currencyRate);
+    double PLNamount = amount - (foreignAmount * currencyRate);
+    double roundedPLNamount = (round(PLNamount * 100)) / 100.0;
 
     return std::make_pair(foreignAmount, roundedPLNamount);
 }
