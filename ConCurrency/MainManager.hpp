@@ -32,6 +32,7 @@ class MainManager
 	void fromForeignToForeign();
 	void moneyExchange();
 	void pause() const;
+	void displayTitle() const;
 
 	void exceptionHandlingForCurrencyCodes() const;
 	void exceptionHandlingForAmountOfMoney() const;

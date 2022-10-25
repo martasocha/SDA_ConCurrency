@@ -114,10 +114,27 @@ void MainManager::moneyExchange()
 
 void MainManager::pause() const
 {
-    std::string pause;
-    std::cout << "Nacisnij enter zeby kontynuowac ...";
-    std::getline(std::cin, pause);
+    char pause = 'a';
+    std::cout << std::endl << "Wybierz x i nacisnij enter zeby kontynuowac: ";
+    std::cin >> pause;
     std::cout << std::endl;
+}
+
+void MainManager::displayTitle() const
+{
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << "\033[97m       $$$$                            $$$$                                                                  \033[0m" << std::endl;
+    std::cout << "\033[97m      $    $                          $    $                                                                 \033[0m" << std::endl;
+    std::cout << "\033[97m     $           $$$      $$$$$      $          $      $  $   $  $   $   $$$$   $$$$$     $$$$    $    $     \033[0m" << std::endl;
+    std::cout << "     $         $     $    $     $    $          $      $  $ $    $ $    $    $  $    $   $    $   $    $     " << std::endl;
+    std::cout << "     $        $       $   $     $    $          $      $  $      $      $$$$$   $    $   $        $    $     " << std::endl;
+    std::cout << "     $         $     $    $     $    $          $      $  $      $      $       $    $   $    $    $$$$$     " << std::endl;
+    std::cout << "\033[90m      $    $     $$$      $     $     $    $      $$$$    $      $       $$$$   $    $    $$$$         $     \033[0m" << std::endl;
+    std::cout << "\033[90m       $$$$                            $$$$                                                          $$$     \033[0m" << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+
 }
 
 void MainManager::exceptionHandlingForCurrencyCodes() const
@@ -147,6 +164,7 @@ void MainManager::exceptionHandlingForAmountOfMoney() const
 
 void MainManager::mainFunction()
 {
+    displayTitle();
     std::cout << std::endl << "Witaj w aplikacji ConCurrency!" << std::endl << std::endl << std::endl;
     _cashierLogIn.cashierLogInMain();
     _cashier.updateCurrencyRatesInDataBase();
