@@ -8,7 +8,7 @@ MainManager::MainManager()
 
 void MainManager::displayCurrencyCodes() const
 {
-    std::cout << "Dostępne waluty: ";
+    std::cout << "Dostepne waluty: ";
 
     for (const auto& code : _cashRegister->getCashRegistersForCurrencies())
     {
@@ -23,25 +23,25 @@ void MainManager::displayCurrencyCodes() const
 
 void MainManager::setMenuOptions()
 {
-    _menuOptions.push_back("1 - Tabela kursów walut");
-    _menuOptions.push_back("2 - Wyświetlenie stanu kas");
-    _menuOptions.push_back("3 - Kup obcą walutę");
-    _menuOptions.push_back("4 - Sprzedaj obcą walutę");
-    _menuOptions.push_back("5 - Wymień obcą walutę na inną obcą walutę");
-    _menuOptions.push_back("6 - Wyjdź z programu");
+    _menuOptions.push_back("1 - Tabela kursow walut");
+    _menuOptions.push_back("2 - Wyswietlenie stanu kas");
+    _menuOptions.push_back("3 - Kup obca walute");
+    _menuOptions.push_back("4 - Sprzedaj obca walute");
+    _menuOptions.push_back("5 - Wymien obca walute na inna obca walute");
+    _menuOptions.push_back("6 - Wyjdz z programu");
 }
 
 
 void MainManager::chooseFromMenu()
 {
-    std::cout << "Wybierz jedną z dostępnych opcji:" << std::endl;
+    std::cout << "Wybierz jedna z dostepnych opcji:" << std::endl << std::endl;
 
     for (auto const& option : _menuOptions)
     {
         std::cout << option << std::endl;
     }
 
-    std::cout << "Twój wybór: ";
+    std::cout << std::endl << "Twoj wybor: ";
     std::cin >> _usersMenuChoice;
 }
 
@@ -125,7 +125,7 @@ void MainManager::exceptionHandlingForCurrencyCodes() const
     std::map<std::string, double> tempMapOfCurrencies = _cashRegister->getCashRegistersForCurrencies();
     if ("PLN" == _currencyCode)
     {
-        throw std::invalid_argument("Nie możesz tutaj wybrać PLN.");
+        throw std::invalid_argument("Nie mozesz tutaj wybrac PLN.");
     }
 
     auto it = tempMapOfCurrencies.find(_currencyCode);
@@ -140,15 +140,15 @@ void MainManager::exceptionHandlingForAmountOfMoney() const
 {
     if (_amountOfMoney <= 0)
     {
-        throw std::invalid_argument("Wprowadzone dane muszą być liczbą większą od 0.");
+        throw std::invalid_argument("Wprowadzone dane musza byc liczba wieksza od 0.");
     }
 }
 
 
 void MainManager::mainFunction()
 {
+    std::cout << std::endl << "Witaj w aplikacji ConCurrency!" << std::endl << std::endl << std::endl;
     _cashierLogIn.cashierLogInMain();
-    std::cout << "Witaj w aplikacji ConCurrency!" << std::endl;
     _cashier.updateCurrencyRatesInDataBase();
 
     do
@@ -182,7 +182,7 @@ void MainManager::mainFunction()
             std::cout << _menuOptions.at(5) << std::endl;
             break;
         default:
-            std::cout << "Taka opcja nie jest dostępna." << std::endl;
+            std::cout << "Taka opcja nie jest dostepna." << std::endl;
             break;
         }
         std::cout << std::endl;

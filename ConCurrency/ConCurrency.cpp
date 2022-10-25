@@ -26,6 +26,6 @@ int main()
 	}
 	catch (const std::exception& error)
 	{
-		std::cout << "Błąd! " << error.what() << std::endl;
+		std::cout << "Blad! " << error.what() << std::endl;
 	}
 }
