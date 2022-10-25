@@ -29,7 +29,7 @@ std::pair<double, double> FromForeignToForeign::currencyExchange(double amount, 
 	}
 	else
 	{
-		throw OutOfCashException("Nie udało się przeprowadzić transakcji, brak potrzebnej ilości waluty w kasach.");
+		throw OutOfCashException("Nie udalo sie przeprowadzic transakcji, brak potrzebnej ilosci waluty w kasach.");
 
 	}
 }
