@@ -9,8 +9,20 @@ DataToDisplay::DataToDisplay()
 	{
 		std::string name = _currencyNames.at(i);
 		std::string currencyCode = _currencyID.at(i);
+		if (currencyCode == "HUF" || currencyCode == "JPY")
+		{
+			std::string currencyCode = "100 " + _currencyID.at(i);
+		}
+		else
+		{
+			std::string currencyCode = _currencyID.at(i);
+		}
 
 		std::string strBuy = currencyCode + "PLN";
+		if (currencyCode == "HUF" || currencyCode == "JPY")
+		{
+			double currencyRateBuy = _dataBase.getMapOfCurrencies().at(strBuy);
+		}
 		double currencyRateBuy = _dataBase.getMapOfCurrencies().at(strBuy);
 
 		std::string strSell = "PLN" + currencyCode;

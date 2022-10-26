@@ -43,6 +43,7 @@ void MainManager::chooseFromMenu()
 
     std::cout << std::endl << "Twoj wybor: ";
     std::cin >> _usersMenuChoice;
+    std::cout << std::endl;
 }
 
 void MainManager::takeAmountOfMoneyFromUser()
@@ -115,7 +116,7 @@ void MainManager::moneyExchange()
 void MainManager::pause() const
 {
     char pause = 'a';
-    std::cout << std::endl << "Wybierz x i nacisnij enter zeby kontynuowac: ";
+    std::cout << std::endl << "Wybierz litere 'x' i nacisnij enter, zeby kontynuowac: ";
     std::cin >> pause;
     std::cout << std::endl;
 }
